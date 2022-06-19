@@ -1,6 +1,9 @@
 package golang_united_school_homework
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 // box contains list of shapes and able to perform operations on them
 type box struct {
@@ -113,10 +116,9 @@ func (b *box) SumArea() float64 {
 func (b *box) RemoveAllCircles() error {
 	var found bool
 	for i, shape := range b.shapes {
-		switch shape.(type) {
-		case Circle:
-			b.removeAt(i)
+		if reflect.TypeOf(shape).String() == "golang_united_school_homework.Circle" {
 			found = true
+			b.removeAt(i)
 		}
 	}
 
