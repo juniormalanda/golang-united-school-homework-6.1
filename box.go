@@ -114,7 +114,7 @@ func (b *box) RemoveAllCircles() error {
 	var found bool
 	for i, shape := range b.shapes {
 		switch shape.(type) {
-		case *Circle:
+		case Circle:
 			b.removeAt(i)
 			found = true
 		}
